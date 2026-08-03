@@ -1,0 +1,6 @@
+Editor spelling UI verification: ok
+Spelling range count: 1
+Spelling range word: speling
+Suggestion count: 2
+Squiggle style present: yes
+Context menu wiring present: yes

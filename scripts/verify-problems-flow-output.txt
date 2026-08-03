@@ -1,0 +1,10 @@
+Markdown issues: 3
+Markdown sample: Line 1 (MD018): No space after hash on atx style heading
+JSON issues: 1
+JSON sample: JSON syntax error: Unexpected token '}', "{"name": }" is not valid JSON
+Merged problems: 5
+Top merged item: Expected value
+ProblemsPanel rendered entries include editor diagnostic: yes
+ProblemsPanel rendered entries include markdown diagnostic: yes
+ProblemsPanel rendered entries include JSON diagnostic: yes
+Rendered markup snippet: <div class="flex-1 overflow-y-auto p-2"><button class="w-full text-left p-2 hover:bg-white/10 rounded-md mb-1 transition-colors group"><div class="flex items-center text-[11px] opacity-70 mb-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi

@@ -1,0 +1,5 @@
+qualityChecks.ts cspell invocation status: ok
+qualityChecks.ts warning count: 0
+qualityChecks.ts issue count: 1
+qualityChecks.ts first issue: Spelling: "speling"
+qualityChecks.ts first issue suggestions: spelling

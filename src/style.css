@@ -1,0 +1,389 @@
+/* ============================================================
+   PrismPane — Global Styles & Tailwind CSS 4 Setup
+   ============================================================ */
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --tblr-body-font-family:
+    "Outfit",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+/* ── Base Reset ─────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family:
+    "Outfit",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent text selection on UI chrome elements */
+[role="toolbar"],
+[role="tablist"],
+aside {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Global Selection Highlighting ───────────────────────── */
+::selection {
+  background-color: #5294e2;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #5294e2;
+  color: #ffffff;
+}
+
+/* ── CodeMirror Selection Visibility ────────────────────── */
+.cm-selectionLayer {
+  opacity: 1 !important;
+}
+
+.cm-selectionBackground {
+  opacity: 1 !important;
+}
+
+/* ── CodeMirror Overrides ───────────────────────────────── */
+.cm-editor {
+  height: 100%;
+  outline: none !important;
+}
+
+.cm-spell-squiggle {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ef4444;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+.cm-editor .cm-scroller {
+  overflow: auto;
+  font-variant-ligatures: contextual;
+  font-feature-settings: "calt";
+}
+
+.cm-editor .cm-content {
+  caret-color: var(--cm-cursor, #fff);
+}
+
+/* Smooth scrolling */
+.cm-editor .cm-scroller {
+  scroll-behavior: smooth;
+}
+
+/* ── Scrollbar Styling ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* ── Base Button & Input Reset ──────────────────────────── */
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  select {
+    font-family: inherit;
+    cursor: pointer;
+  }
+}
+
+/* ── Utility Classes ────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.glass {
+  background: inherit;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Tabler compatibility with PrismPane dynamic theme tokens */
+.btn,
+.card,
+.dropdown-menu,
+.form-control,
+.form-select,
+.form-check-input,
+.nav-link {
+  border-color: var(--toolbar-border, rgba(255, 255, 255, 0.12));
+}
+
+.form-control,
+.form-select,
+.dropdown-menu,
+.card,
+.btn,
+.nav-link {
+  background-color: color-mix(in srgb, var(--toolbar-bg, #111827) 88%, transparent);
+  color: var(--toolbar-fg, #e5e7eb);
+}
+
+.btn-primary {
+  border-color: transparent;
+}
+
+.form-check-input {
+  background-color: transparent;
+}
+
+.dropdown-item {
+  color: var(--toolbar-fg, #e5e7eb);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus-visible {
+  background-color: color-mix(in srgb, var(--toolbar-fg, #e5e7eb) 14%, transparent);
+}
+
+.prismpane-shell {
+  font-size: clamp(13px, 0.12vw + 12px, 15px);
+  line-height: 1.45;
+}
+
+.prismpane-menubar {
+  min-height: 27px;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.prismpane-toolbar {
+  gap: 0.25rem;
+  min-height: 44px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.prismpane-toolbar .btn {
+  min-height: 2.15rem;
+  min-width: 2.15rem;
+  padding: 0.35rem;
+}
+
+.prismpane-toolbar .btn svg {
+  width: 1.35rem !important;
+  height: 1.35rem !important;
+}
+
+.prismpane-menubar button {
+  border: 0;
+  box-shadow: none;
+}
+
+.prismpane-command-palette .form-control,
+.prismpane-search-panel .form-control,
+.prismpane-settings-panel .form-select {
+  font-size: 0.8rem;
+}
+
+.prismpane-statusbar {
+  letter-spacing: 0.01em;
+}
+
+.prismpane-tabbar {
+  border-bottom: 1px solid var(--toolbar-border, rgba(255, 255, 255, 0.12));
+  padding-top: 0.2rem;
+}
+
+.prismpane-tabbar > [role='tab'] {
+  border-top-left-radius: 0.22rem;
+  border-top-right-radius: 0.22rem;
+  box-shadow: none;
+}
+
+.prismpane-tabbar > [role='tab'][aria-selected='true'] {
+  font-weight: 600;
+}
+
+.prismpane-tabbar > [role='tab'][aria-selected='false'] {
+  border-bottom-color: transparent !important;
+}
+
+@media (max-width: 1024px) {
+  .prismpane-shell {
+    font-size: 13px;
+  }
+
+  .prismpane-toolbar {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    gap: 0.25rem;
+    min-height: 42px;
+  }
+
+  .prismpane-statusbar {
+    gap: 0.55rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .prismpane-shell {
+    font-size: 12.5px;
+  }
+
+  .prismpane-sidebar {
+    width: 13.5rem;
+  }
+
+  .prismpane-menubar {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    gap: 0.2rem;
+  }
+
+  .prismpane-menubar button {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.73rem;
+  }
+
+  .prismpane-toolbar .btn {
+    min-height: 1.95rem;
+    min-width: 1.95rem;
+    padding: 0.25rem;
+  }
+
+  .prismpane-toolbar .btn svg {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+
+  .prismpane-statusbar {
+    font-size: 10px;
+    gap: 0.4rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .prismpane-settings-panel {
+    width: min(96vw, 560px);
+    max-height: 88vh;
+  }
+
+  .prismpane-command-palette {
+    width: min(95vw, 42rem);
+    max-height: 68vh;
+  }
+}
+
+/* ── Dynamic Button Theming ─────────────────────────────── */
+.btn:hover,
+.prismpane-menubar button:hover,
+.btn-icon:hover {
+  background-color: var(--active-tab-color) !important;
+  color: var(--editor-bg) !important;
+  opacity: 1 !important;
+}
+
+.btn:hover svg,
+.prismpane-menubar button:hover svg,
+.btn-icon:hover svg {
+  color: var(--editor-bg) !important;
+}
+
+/* Update active states that use bg-white/10 to also use theme colors */
+.bg-white\/10.btn,
+.bg-white\/10.btn-icon {
+  background-color: var(--active-tab-color) !important;
+  color: var(--editor-bg) !important;
+  opacity: 1 !important;
+}
+
+.bg-white\/10.btn svg,
+.bg-white\/10.btn-icon svg {
+  color: var(--editor-bg) !important;
+}
+
+/* ── Inline Color Swatch Styling ────────────────────────── */
+.cm-color-swatch-wrapper {
+  margin-right: 6px;
+  margin-left: 2px;
+}
+
+.cm-color-swatch {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.45), 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.cm-color-swatch:hover {
+  transform: scale(1.25);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 0 1.5px #3b82f6, 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Color Picker Modal Slider Styling ─────────────────── */
+.w-color-alpha-pointer {
+  top: 50% !important;
+}
+
+.w-color-alpha-fill {
+  transform: translate(-9px, -50%) !important;
+}
+
+
